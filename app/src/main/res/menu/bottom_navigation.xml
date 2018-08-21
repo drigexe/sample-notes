@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_notes_list"
+        android:icon="@drawable/ic_notes_list"
+        android:title="@string/bottom_nav_notes_list" />
+
+    <item
+        android:id="@+id/nav_new_note"
+        android:icon="@drawable/ic_new_note"
+        android:title="@string/bottom_nav_new_note" />
+
+    <item
+        android:id="@+id/nav_user"
+        android:icon="@drawable/ic_user"
+        android:title="@string/bottom_nav_user" />
+
+</menu>
