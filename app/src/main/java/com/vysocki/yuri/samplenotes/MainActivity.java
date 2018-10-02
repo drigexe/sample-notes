@@ -6,12 +6,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNav;
+    protected static final int FRAGMENT_CONTAINER_ID = R.id.fragment_container;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +23,21 @@ public class MainActivity extends AppCompatActivity {
         bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        setFragment(new NotesListFragment(), false);
+        if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
+            Log.d("fragment", "BackStack is empty");
+            Fragment fragment = new NotesListFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(FRAGMENT_CONTAINER_ID, fragment, fragment.getClass().toString());
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        } else {
+            Log.d("fragment", "BackStack is NOT empty");
+        }
+
+        /*if (getSupportFragmentManager().findFragmentById(FRAGMENT_CONTAINER_ID) instanceof NotesListFragment) {
+            Log.d("fragment", "Fragment is instance of NoteListFragment");
+        }*/
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -30,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                     Fragment selectedFragment = defineSelectedMenuItem(item.getItemId());
-                    setFragment(selectedFragment, false);
+                    setFragment(selectedFragment, FRAGMENT_CONTAINER_ID, true);
 
                     return true;
                 }
@@ -52,13 +68,26 @@ public class MainActivity extends AppCompatActivity {
         return selectedFragment;
     }
 
-    protected void setFragment(Fragment fragment, boolean toBackStack) {
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, fragment);
-        if (toBackStack) {
-            fragmentTransaction.addToBackStack(null);
+    protected void setFragment(Fragment fragment, int containerId, boolean toBackStack) {
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(containerId);
+        String tag = currentFragment.getTag();
+        if (!fragment.getClass().toString().equals(tag)) {
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(containerId, fragment, fragment.getClass().toString());
+            if (toBackStack) {
+                fragmentTransaction.addToBackStack(null);
+            }
+            fragmentTransaction.commit();
         }
-        fragmentTransaction.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() < 2) {
+            finish();
+        } else {
+            super.onBackPressed();
+        }
     }
 
     protected void setBottomNavigationVisibility(boolean visibilityState) {

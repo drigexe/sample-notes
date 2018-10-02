@@ -6,15 +6,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Notes list" />
-
-    <Button
-        android:id="@+id/buttonTest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:text="Button" />
+        android:layout_marginTop="50dp"
+        android:text="DETAIL" />
 </RelativeLayout>

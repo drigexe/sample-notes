@@ -9,13 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class UserProfileFragment extends Fragment {
+public class NoteDetailFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_user_profile, container, false);
-        Log.d("fragment", "UserProfileCreateView");
+        View view = inflater.inflate(R.layout.fragment_note_detail, container, false);
+        Log.d("fragment", "NoteDetailCreateView");
         return view;
     }
 }
