@@ -16,6 +16,9 @@ public class UserProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user_profile, container, false);
         Log.d("fragment", "UserProfileCreateView");
+
+        ((MainActivity)getActivity()).setBottomNavigationSelectedItem(R.id.nav_user);
+
         return view;
     }
 }

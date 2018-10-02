@@ -15,7 +15,9 @@ public class NewNoteFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_new_note, container, false);
-        Log.d("fragment", "NewNoteCreateView");
+
+        ((MainActivity)getActivity()).setBottomNavigationSelectedItem(R.id.nav_new_note);
+
         return view;
     }
 }

@@ -16,9 +16,10 @@ public class NotesListFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_notes_list, container, false);
-        Log.d("fragment", "NoteListCreateView");
-        Button button = view.findViewById(R.id.buttonTest);
 
+        ((MainActivity)getActivity()).setBottomNavigationSelectedItem(R.id.nav_notes_list);
+
+        Button button = view.findViewById(R.id.buttonTest);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -28,48 +29,6 @@ public class NotesListFragment extends Fragment {
         });
 
         return view;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        Log.d("fragment", "NoteListOnStart");
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.d("fragment", "NoteListOnResume");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.d("fragment", "NoteListOnPause");
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.d("fragment", "NoteListOnStop");
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        Log.d("fragment", "NoteListOnDestroyView");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.d("fragment", "NoteListOnDestroy");
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        Log.d("fragment", "NoteListOnDetach");
     }
 
 }

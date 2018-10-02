@@ -24,19 +24,12 @@ public class MainActivity extends AppCompatActivity {
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
         if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
-            Log.d("fragment", "BackStack is empty");
             Fragment fragment = new NotesListFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(FRAGMENT_CONTAINER_ID, fragment, fragment.getClass().toString());
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
-        } else {
-            Log.d("fragment", "BackStack is NOT empty");
         }
-
-        /*if (getSupportFragmentManager().findFragmentById(FRAGMENT_CONTAINER_ID) instanceof NotesListFragment) {
-            Log.d("fragment", "Fragment is instance of NoteListFragment");
-        }*/
 
     }
 
@@ -88,6 +81,10 @@ public class MainActivity extends AppCompatActivity {
         } else {
             super.onBackPressed();
         }
+    }
+
+    protected void setBottomNavigationSelectedItem(int menuItemId) {
+        bottomNav.setSelectedItemId(menuItemId);
     }
 
     protected void setBottomNavigationVisibility(boolean visibilityState) {
