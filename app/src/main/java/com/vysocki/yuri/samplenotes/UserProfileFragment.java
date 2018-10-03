@@ -11,11 +11,14 @@ import android.view.ViewGroup;
 
 public class UserProfileFragment extends Fragment {
 
+    public static UserProfileFragment newInstance() {
+        return new UserProfileFragment();
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user_profile, container, false);
-        Log.d("fragment", "UserProfileCreateView");
 
         ((MainActivity)getActivity()).setBottomNavigationSelectedItem(R.id.nav_user);
 

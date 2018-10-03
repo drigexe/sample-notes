@@ -24,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
         if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
-            Fragment fragment = new NotesListFragment();
+            NotesListFragment notesListFragment = NotesListFragment.newInstance();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(FRAGMENT_CONTAINER_ID, fragment, fragment.getClass().toString());
+            fragmentTransaction.replace(FRAGMENT_CONTAINER_ID, notesListFragment, notesListFragment.getClass().toString());
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         }
@@ -49,13 +49,13 @@ public class MainActivity extends AppCompatActivity {
         Fragment selectedFragment = null;
         switch (menuItemId) {
             case R.id.nav_notes_list:
-                selectedFragment = new NotesListFragment();
+                selectedFragment = NotesListFragment.newInstance();
                 break;
             case R.id.nav_new_note:
-                selectedFragment = new NewNoteFragment();
+                selectedFragment = NewNoteFragment.newInstance();
                 break;
             case R.id.nav_user:
-                selectedFragment = new UserProfileFragment();
+                selectedFragment = UserProfileFragment.newInstance();
                 break;
         }
         return selectedFragment;

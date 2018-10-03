@@ -11,6 +11,10 @@ import android.view.ViewGroup;
 
 public class NewNoteFragment extends Fragment {
 
+    public static NewNoteFragment newInstance() {
+        return new NewNoteFragment();
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

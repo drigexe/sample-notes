@@ -12,6 +12,10 @@ import android.widget.Button;
 
 public class NotesListFragment extends Fragment {
 
+    public static NotesListFragment newInstance() {
+        return new NotesListFragment();
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -23,7 +27,7 @@ public class NotesListFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment noteDetailFragment = new NoteDetailFragment();
+                NoteDetailFragment noteDetailFragment = NoteDetailFragment.newInstance("Some string in bundle");
                 ((MainActivity)getActivity()).setFragment(noteDetailFragment, MainActivity.FRAGMENT_CONTAINER_ID, true);
             }
         });

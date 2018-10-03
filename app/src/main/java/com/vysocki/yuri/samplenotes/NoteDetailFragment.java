@@ -11,6 +11,16 @@ import android.view.ViewGroup;
 
 public class NoteDetailFragment extends Fragment {
 
+    private static final String NOTE_KEY = "NOTE_KEY";
+
+    public static NoteDetailFragment newInstance(String noteInfo) {
+        NoteDetailFragment noteDetailFragment = new NoteDetailFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(NOTE_KEY, noteInfo);
+        noteDetailFragment.setArguments(bundle);
+        return noteDetailFragment;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
